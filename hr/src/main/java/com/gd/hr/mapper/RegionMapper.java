@@ -9,8 +9,13 @@ import com.gd.hr.vo.Region;
 @Mapper // --> @Repository public class XXX implements RegionMapper {...}
 public interface RegionMapper {
 	
-	List<Region> selectRegionList(); //Select쿼리를 만들어줄거임
-	int insertRegion(Region region);
-	int deleteRegion(int regionId);
-	int updateRegion(Region region);
+	// 지역목록
+	List<Region> selectRegionList(); 
+	// 지역추가
+	int insertRegion(Region region); 
+	// 지역삭제
+	int deleteRegion(int regionId); 
+	// 지역수정
+	int updateRegion(Region region); 
+	
 }

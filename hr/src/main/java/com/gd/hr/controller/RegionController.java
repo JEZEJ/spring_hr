@@ -14,9 +14,10 @@ import com.gd.hr.vo.Region;
 
 @Controller
 public class RegionController { // controller - service - mapper
+	
+	// ★ Controller에서 PostMapper은 Action GetMapper은 From 
 
-	@Autowired
-	IRegionService regionService; // <-- new 인터페이스의 자식인 regionService가 주입
+	@Autowired IRegionService regionService; // <-- new 인터페이스의 자식인 regionService가 주입
 
 	// 대륙관리 action이 없기때문에 GetMapper만줘도됨
 	@GetMapping("/regionList") // return type이 String이면 view리턴 -- ModelAndView는 모델과 뷰 리턴
@@ -30,12 +31,13 @@ public class RegionController { // controller - service - mapper
 		return "regionList"; // ("regionList").forward(request, response);
 		// regionList redirect
 	}
-	//Form
+	// 지역추가 Form
 	@GetMapping("/addRegion") // 톰캣이 오류나면 맵핑이 중복됬는지 확인해줘야함
 	public String addRegion() {
 		return "addRegion";
 	}
 
+	// 지역추가 Action
 	@PostMapping("/addRegion") // Action
 	public String addRegion(Region region) { // vo객체 넣어줌
 		// @RequestParam(value = "regionId", defaultValue = "1") int regionId)
@@ -49,8 +51,9 @@ public class RegionController { // controller - service - mapper
 		return "redirect:/regionList";
 	} // 여기까지 실행되면 컨트롤러로 돌아오고 redirect해주기
 
+	// 지역삭제 
 	@GetMapping("/removeRegion")
-	public String removeRegion(@RequestParam(value = "regionId") int regionId) {
+	public String removeRegion(@RequestParam(value ="regionId") int regionId) {
 		
 		int row = regionService.removeRegion(regionId);
 		System.out.println(row);
@@ -58,13 +61,14 @@ public class RegionController { // controller - service - mapper
 		return "redirect:/regionList";
 	}
 	
-	//Form
+	// 지역수정 Form
 	@GetMapping("/modifyRegion")
 	public String modifyRegion(Model model, Region region ) {
 		model.addAttribute("list",region );
 		return "modifyRegion"; // forward
 	}
 	
+	// 지역수정 Action
 	@PostMapping("/modifyRegion")
 	public String modifyRegion(Region region) {
 		
@@ -73,4 +77,7 @@ public class RegionController { // controller - service - mapper
 		
 		return "redirect:/regionList";
 	}
+	
+	
+	
 }

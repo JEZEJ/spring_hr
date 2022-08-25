@@ -13,7 +13,7 @@
 		<c:import url="/WEB-INF/view/inc/menu.jsp"></c:import>
 	</div>
 	<div>
-		<a href="${pageContext.request.contextPath}/addRegion">add region</a>
+		<a href="${pageContext.request.contextPath}/addRegion">add region</a><!-- 추가폼으로 이동 -->
 	</div>
 	<table border="1">
 		<tr>
@@ -22,7 +22,7 @@
 			<th>수정</th>
 			<th>삭제</th>
 		</tr>
-		<c:forEach var="r" items="${list}">
+		<c:forEach var="r" items="${list}"><!-- list에 저장되있는 값 빼주기 -->
 			<tr>
 				<td>${r.regionId}</td>
 				<td>${r.regionName}</td>

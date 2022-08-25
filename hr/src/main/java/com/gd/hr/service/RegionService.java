@@ -14,7 +14,8 @@ import com.gd.hr.vo.Region;
 public class RegionService implements IRegionService{
 	// DI : 객체를 직접 생성하지않고 프레임워크를 통해 (bean객체) 주입
 	// Interface 타입을 사용
-	@Autowired private RegionMapper regionMapper; // 쿼리가 있는 mapper을 받는다
+	@Autowired 
+	private RegionMapper regionMapper; 
 	
 	@Override
 	public List<Region> getRegionList() {

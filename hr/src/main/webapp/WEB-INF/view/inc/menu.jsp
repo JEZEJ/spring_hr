@@ -8,3 +8,4 @@
 	<a href="${pageContext.request.contextPath}/employeeList">사원관리</a>
 	<a href="${pageContext.request.contextPath}/jobHistoryList">사원이력관리</a>
 </div>
+<hr/>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,18 +12,26 @@
 	<div>
 		<c:import url="/WEB-INF/view/inc/menu.jsp"></c:import>
 	</div>
-	<form method="post" action="${pageContext.request.contextPath}/addRegion">
+	<form method="post" action="${pageContext.request.contextPath}/addCountry">
+
+		regionId : <select name="regionId">
+			<c:forEach items="${regionList}" var="r">
+				<option value="${r.regionId}">${r.regionId}</option>
+			</c:forEach>
+		</select>
+
+
+
 		<div>
-			regionId : <input type="text" name="regionId">
+			countryId : <input type="text" name="countryId">
 		</div>
 		<div>
-			regionName : <input type="text" name="regionName">
+			countryName : <input type="text" name="countryName">
 		</div>
 		<div>
-			<button type="submit">addRegion</button>
+			<button type="submit">addCountry</button>
 		</div>
 	</form>
-
 	<div>
 		<c:import url="/WEB-INF/view/inc/footer.jsp"></c:import>
 	</div>
