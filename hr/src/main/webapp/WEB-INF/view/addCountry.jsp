@@ -36,4 +36,4 @@
 		<c:import url="/WEB-INF/view/inc/footer.jsp"></c:import>
 	</div>
 </body>
-</html>
+</html> 

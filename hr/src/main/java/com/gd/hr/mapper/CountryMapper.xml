@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gd.hr.mapper.CountryMapper">
-	
+
 	<!-- 나라목록보기 쿼리 -->
 	<select id="selectCountryList" resultType="map">
       SELECT 
@@ -12,18 +12,43 @@
       FROM countries c INNER JOIN regions r
       ON c.region_id = r.region_id
    </select>
-	
+
 	<!-- 나라입력 -->
 	<insert id="insertCountry" parameterType="com.gd.hr.vo.Country"><!-- insert의 resultType은 무조건 int -->
 		INSERT INTO countries (country_id, country_name, region_id)
 		VALUES (#{countryId},#{countryName},#{regionId})
 	</insert>
-	
+
 	<!-- 나라수정 -->
 	<update id="updateCountry" parameterType="com.gd.hr.vo.Country">
 		UPDATE countries 
 		SET region_id=#{regionId},country_name=#{countryName}
 		WHERE country_id=#{countryId}
 	</update>
+	
+	<!-- 나라수정 form -->
+	<select id="selectCountryOne" parameterType="String" resultType="com.gd.hr.vo.Country">
+		SELECT 
+			country_id countryId,
+			country_name countryName,
+			region_id regionId
+		FROM countries
+		WHERE country_id = #{countryId}
+	</select>
+	
+	<!-- 나라삭제 -->
+	<delete id="deleteCountry" parameterType="String">
+		DELETE 
+		FROM countries
+		WHERE country_id = #{countryId}
+	</delete>
+	
+	<select id="selectCountryIdAndNameList" parameterType="int" resultType="com.gd.hr.vo.Country">
+      SELECT 
+         country_id countryId,
+         country_name countryName
+      FROM countries
+      WEHRE region_id = #{region_id}
+   </select>
 
-</mapper>
+</mapper> 

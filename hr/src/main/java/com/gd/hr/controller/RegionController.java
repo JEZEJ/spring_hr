@@ -17,7 +17,8 @@ public class RegionController { // controller - service - mapper
 	
 	// ★ Controller에서 PostMapper은 Action GetMapper은 From 
 
-	@Autowired IRegionService regionService; // <-- new 인터페이스의 자식인 regionService가 주입
+	@Autowired
+	IRegionService regionService; // <-- new 인터페이스의 자식인 regionService가 주입
 
 	// 대륙관리 action이 없기때문에 GetMapper만줘도됨
 	@GetMapping("/regionList") // return type이 String이면 view리턴 -- ModelAndView는 모델과 뷰 리턴
